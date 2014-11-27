@@ -82,10 +82,20 @@ compileAction env = go
 -- End implementation
 
 printDevs = do
+  putStrLn "Available devices: "
   n <- MIDI.countDevices
   forM_ [0..n-1] $ \i -> do
     info <- MIDI.getDeviceInfo i
     putStrLn $ show i ++ ": " ++ show info
+  putStrLn ""
+
+printDevName i = do
+  n <- MIDI.countDevices
+  if i < 2 then do
+    info <- MIDI.getDeviceInfo i
+    putStrLn $ show i ++ ": " ++ show (MIDI.name info)
+  else
+    return ()
   
 runWilde = do
   MIDI.initialize
@@ -99,15 +109,35 @@ runWilde = do
     Right e -> error $ "Could not start MIDI: " ++ show e
     Left x -> x
   let env = Env oscOut midiIn
-  
-  printDevs
-  listen env $
-    [ (MIDINoteOn (IntEQ 60) (IntGT 0), SendOSC "/fluent/play" ["n1","60"])
-    , (MIDINoteOn (IntEQ 60) (IntEQ 0), SendOSC "/fluent/stop" ["n1"])
-    ]
 
   putStrLn $ "Wilde is running!"
+  putStr $ "Listening for MIDI from "
+  printDevName kMIDIIn
   putStrLn $ "Sending OSC to" ++ show kOSCDest
+  
+  -- printDevs
+  listen env $
+    [ (MIDINoteOn (IntGT 83) (IntGT 0), SendOSC "/fluent/stop" ["n1"])
+    , (MIDINoteOn (IntGT 83) (IntGT 0), SendOSC "/fluent/stop" ["n2"])
+    , (MIDINoteOn (IntGT 83) (IntGT 0), SendOSC "/fluent/stop" ["n3"])
+    , (MIDINoteOn (IntGT 83) (IntGT 0), SendOSC "/fluent/stop" ["n4"])
+    , (MIDINoteOn (IntGT 83) (IntGT 0), SendOSC "/fluent/stop" ["n5"])
+    , (MIDINoteOn (IntGT 83) (IntGT 0), SendOSC "/fluent/stop" ["n6"])
+    , (MIDINoteOn (IntGT 83) (IntGT 0), SendOSC "/fluent/stop" ["n7"])
+    , (MIDINoteOn (IntGT 83) (IntGT 0), SendOSC "/fluent/stop" ["n8"])
+
+    , (MIDINoteOn (IntEQ 61) (IntGT 0), SendOSC "/fluent/play" ["n1","chord1_begin"])
+    , (MIDINoteOn (IntEQ 62) (IntGT 0), SendOSC "/fluent/play" ["n2","chord2_begin"])
+    , (MIDINoteOn (IntEQ 63) (IntGT 0), SendOSC "/fluent/play" ["n3","chord3_begin"])
+    , (MIDINoteOn (IntEQ 64) (IntGT 0), SendOSC "/fluent/play" ["n4","chord4_begin"])
+    , (MIDINoteOn (IntEQ 65) (IntGT 0), SendOSC "/fluent/play" ["n5","chord5_begin"])
+    , (MIDINoteOn (IntEQ 66) (IntGT 0), SendOSC "/fluent/play" ["n6","chord6_begin"])
+    , (MIDINoteOn (IntEQ 67) (IntGT 0), SendOSC "/fluent/play" ["n7","chord7_begin"])
+    , (MIDINoteOn (IntEQ 68) (IntGT 0), SendOSC "/fluent/play" ["n8","chord8_begin"])
+
+    , (MIDINoteOn (IntEQ 71) (IntGT 0), SendOSC "/fluent/play" ["n1","crossing_bass"])
+    ]
+
 
 
   

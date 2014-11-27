@@ -1,0 +1,46 @@
+
+name:               wilde
+version:            0.1
+cabal-version:      >= 1.10
+author:             Hans Hoglund
+maintainer:         Hans Hoglund <hans@hanshoglund.se>
+license:            BSD3
+license-file:       COPYING
+synopsis:           Simple OSC routing Framework.
+category:           
+tested-with:        GHC
+build-type:         Simple
+
+description:
+    Simple MIDI/OSC routing Framework.
+
+source-repository head
+    type:               git
+    location:           git://github.com/hanshoglund/foobar.git
+
+library
+    build-depends:
+        base            >= 4 && < 5,
+        random,
+        stm,
+        containers,
+        text,
+        bytestring,
+        
+        -- lens            >= 4.4.0.2 && < 4.5,
+        hosc            >= 0.14.1 && < 1,
+        PortMidi        >= 0.1.3 && < 2
+    hs-source-dirs:     src
+    default-language:   Haskell2010
+    ghc-options:        -O3 -threaded
+    exposed-modules:
+        Sound.OSC.Wilde
+
+executable fluent
+    build-depends:
+        base            >= 4 && < 5,
+        wilde           == 0.1
+    hs-source-dirs:     .
+    main-is:            Main.hs
+    default-language:   Haskell2010
+    ghc-options:        -O3 -threaded

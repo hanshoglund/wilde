@@ -36,7 +36,7 @@ library
     exposed-modules:
         Sound.OSC.Wilde
 
-executable fluent
+executable wilde
     build-depends:
         base            >= 4 && < 5,
         wilde           == 0.1

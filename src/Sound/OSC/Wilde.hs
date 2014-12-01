@@ -152,5 +152,5 @@ runWilde = do
 
   
 kOSCDest = ("127.0.0.1", 54321)
-kMIDIIn  = 0
+kMIDIIn  = 1
 

@@ -144,7 +144,7 @@ runWilde = do
     , (MIDINoteOn (IntEQ 66) (IntGT 0), SendOSC "/fluent/play" ["n7","chord7_begin_rev"])
     , (MIDINoteOn (IntEQ 67) (IntGT 0), SendOSC "/fluent/play" ["n8","chord8_begin_rev"])
 
-    , (MIDINoteOn (IntEQ 91) (IntGT 0), SendOSC "/fluent/play" ["n0","crossing_bass"])
+    , (MIDINoteOn (IntEQ 95) (IntGT 0), SendOSC "/fluent/play" ["n0","crossing_bass"])
 
     -- End
     , (MIDINoteOn (IntEQ 69) (IntGT 0), SendOSC "/fluent/play" ["n1","chord1_begin_rev"])

@@ -117,14 +117,15 @@ runWilde = do
   
   -- printDevs
   listen env $
-    [ (MIDINoteOn (IntGT 83) (IntGT 0), SendOSC "/fluent/stop" ["n1"])
-    , (MIDINoteOn (IntGT 83) (IntGT 0), SendOSC "/fluent/stop" ["n2"])
-    , (MIDINoteOn (IntGT 83) (IntGT 0), SendOSC "/fluent/stop" ["n3"])
-    , (MIDINoteOn (IntGT 83) (IntGT 0), SendOSC "/fluent/stop" ["n4"])
-    , (MIDINoteOn (IntGT 83) (IntGT 0), SendOSC "/fluent/stop" ["n5"])
-    , (MIDINoteOn (IntGT 83) (IntGT 0), SendOSC "/fluent/stop" ["n6"])
-    , (MIDINoteOn (IntGT 83) (IntGT 0), SendOSC "/fluent/stop" ["n7"])
-    , (MIDINoteOn (IntGT 83) (IntGT 0), SendOSC "/fluent/stop" ["n8"])
+    [ (MIDINoteOn (IntGT 95) (IntGT 0), SendOSC "/fluent/stop" ["n1"])
+    , (MIDINoteOn (IntGT 95) (IntGT 0), SendOSC "/fluent/stop" ["n2"])
+    , (MIDINoteOn (IntGT 95) (IntGT 0), SendOSC "/fluent/stop" ["n3"])
+    , (MIDINoteOn (IntGT 95) (IntGT 0), SendOSC "/fluent/stop" ["n4"])
+    , (MIDINoteOn (IntGT 95) (IntGT 0), SendOSC "/fluent/stop" ["n5"])
+    , (MIDINoteOn (IntGT 95) (IntGT 0), SendOSC "/fluent/stop" ["n6"])
+    , (MIDINoteOn (IntGT 95) (IntGT 0), SendOSC "/fluent/stop" ["n7"])
+    , (MIDINoteOn (IntGT 95) (IntGT 0), SendOSC "/fluent/stop" ["n8"])
+    , (MIDINoteOn (IntGT 95) (IntGT 0), SendOSC "/fluent/stop" ["n0"])
 
     , (MIDINoteOn (IntEQ 60) (IntGT 0), SendOSC "/fluent/play" ["n1","chord1_begin"])
     , (MIDINoteOn (IntEQ 61) (IntGT 0), SendOSC "/fluent/play" ["n2","chord2_begin"])
@@ -135,7 +136,7 @@ runWilde = do
     , (MIDINoteOn (IntEQ 66) (IntGT 0), SendOSC "/fluent/play" ["n7","chord7_begin"])
     , (MIDINoteOn (IntEQ 67) (IntGT 0), SendOSC "/fluent/play" ["n8","chord8_begin"])
 
-    , (MIDINoteOn (IntEQ 68) (IntGT 0), SendOSC "/fluent/play" ["n1","crossing_bass"])
+    , (MIDINoteOn (IntEQ 91) (IntGT 0), SendOSC "/fluent/play" ["n0","crossing_bass"])
 
     , (MIDINoteOn (IntEQ 69) (IntGT 0), SendOSC "/fluent/play" ["n1","chord1_begin"])
     , (MIDINoteOn (IntEQ 70) (IntGT 0), SendOSC "/fluent/play" ["n2","chord2_begin"])
